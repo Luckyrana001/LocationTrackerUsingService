@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LocationTrackerUsingService</string>
+
+
+
+    <string name="GPSAlertDialogTitle">Location Alert</string>
+    <string name="GPSAlertDialogMessage">Allow Gps Location from Settings.</string>
+    <string name="cancel">Cancel</string>
+    <string name="allow">Allow</string>
+</resources>
