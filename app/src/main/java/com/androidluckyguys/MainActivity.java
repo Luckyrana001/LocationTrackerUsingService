@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        checkLocationPermission(activity,context,LOCATION_PERMISSION);
+
+        //checkLocationPermission(activity,context,LOCATION_PERMISSION);
 
 
     }
