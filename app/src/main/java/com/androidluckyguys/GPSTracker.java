@@ -48,7 +48,7 @@ public class GPSTracker extends Service implements LocationListener {
     boolean isGPSTrackingEnabled = false;
 
     Location location;
-    public static double latitude;
+    public static double latitude=0.0;
     public static double longitude;
 
     // How many Geocoder should return our GPSTracker
@@ -99,7 +99,9 @@ public class GPSTracker extends Service implements LocationListener {
 
                 provider_info = LocationManager.GPS_PROVIDER;
 
-            } else if (isNetworkEnabled) { // Try to get location if you Network Service is enabled
+            }  // usually Gps takes 2-3 min to start when we switch on a phone, so in that case i am fetching network
+            // location .
+            if (isNetworkEnabled && getLatitude()!=0.0)  { // Try to get location if you Network Service is enabled
                 this.isGPSTrackingEnabled = true;
 
                 Log.d(TAG, "Application use Network State to get GPS coordinates");
@@ -112,6 +114,7 @@ public class GPSTracker extends Service implements LocationListener {
                 provider_info = LocationManager.NETWORK_PROVIDER;
 
             }
+
 
             // Application can use GPS or Network Provider
             if (!provider_info.isEmpty()) {

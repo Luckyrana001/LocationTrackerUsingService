@@ -21,8 +21,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 0;
     public static final String LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION;
+    public static final String LOCATION_PREF = "locationPref";
 
-    Context context;Activity activity;
+            Context context;Activity activity;
     Button checkPermissionStatus;
     int permissionStatus = 0;
     @Override
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                checkLocationPermission(activity,context,LOCATION_PERMISSION);
+                checkLocationPermission(activity,context,LOCATION_PERMISSION,LOCATION_PREF);
 
             }
         });
@@ -51,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void checkLocationPermission(Activity activity, final Context context, final String Permission) {
+    private void checkLocationPermission(Activity activity, final Context context, final String Permission,final String prefName) {
 
-        PermissionUtil.checkPermission(activity,context,Permission,
+        PermissionUtil.checkPermission(activity,context,Permission,prefName,
                 new PermissionUtil.PermissionAskListener() {
                     @Override
                     public void onPermissionAsk() {
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         // set dialog message
         alertDialogBuilder
-                .setMessage("Kindly allow Permission from App Setting, without this permission app would not show maps.")
+                .setMessage("Kindly allow Permission from App Setting, without this permission app could not show maps.")
                 .setCancelable(false)
                 .setPositiveButton("OK",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {

@@ -29,7 +29,7 @@ import static com.androidluckyguys.MainActivity.MY_PERMISSIONS_REQUEST_ACCESS_FI
         }
         return false;
     }
-    public static void checkPermission(Activity activity, Context context, String permission, PermissionAskListener listener){
+    public static void checkPermission(Activity activity, Context context, String permission,String PrefName, PermissionAskListener listener){
 /*
         * If permission is not granted
         * */
@@ -45,8 +45,8 @@ import static com.androidluckyguys.MainActivity.MY_PERMISSIONS_REQUEST_ACCESS_FI
                 /*
                 * Permission denied or first time requested
                 * */
-                if (PrefrenceUtil.isFirstTimeAskingPermission(context, permission)) {
-                    PrefrenceUtil.firstTimeAskingPermission(context, permission, false);
+                if (PrefrenceUtil.isFirstTimeAskingPermission(context, permission,PrefName)) {
+                    PrefrenceUtil.firstTimeAskingPermission(context, permission, false,PrefName);
 
 
                     listener.onPermissionAsk();
