@@ -42,7 +42,7 @@ public class GPSTracker extends Service implements LocationListener {
     boolean isGPSEnabled = false;
 
     // flag for network status
-    boolean isNetworkEnabled = false;
+    boolean isNetworkEnabled = true;
 
     // flag for GPS Tracking is enabled
     boolean isGPSTrackingEnabled = false;
@@ -101,7 +101,7 @@ public class GPSTracker extends Service implements LocationListener {
 
             }  // usually Gps takes 2-3 min to start when we switch on a phone, so in that case i am fetching network
             // location .
-            if (isNetworkEnabled && getLatitude()!=0.0)  { // Try to get location if you Network Service is enabled
+            if (isNetworkEnabled && getLatitude()==0.0)  { // Try to get location if you Network Service is enabled
                 this.isGPSTrackingEnabled = true;
 
                 Log.d(TAG, "Application use Network State to get GPS coordinates");
